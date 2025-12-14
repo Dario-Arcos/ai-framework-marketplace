@@ -1,0 +1,27 @@
+{
+  "name": "ai-framework-marketplace",
+  "owner": {
+    "name": "Dario Arcos"
+  },
+  "metadata": {
+    "description": "Curated Claude Code plugins for AI-first development",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-framework",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Dario-Arcos/ai-framework.git"
+      },
+      "description": "Constitutional AI-first development framework with specialized agents, workflow commands, and intelligent hooks",
+      "version": "4.3.1",
+      "author": {
+        "name": "Dario Arcos"
+      },
+      "category": "productivity",
+      "tags": ["ai-first", "constitutional-governance", "tdd", "agents", "workflow-automation"],
+      "strict": true
+    }
+  ]
+}
