@@ -1,0 +1,69 @@
+name: Receive Plugin Version Update
+
+on:
+  repository_dispatch:
+    types: [plugin-version-update]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to update to'
+        required: true
+      plugin:
+        description: 'Plugin name'
+        required: true
+        default: 'ai-framework'
+
+permissions:
+  contents: write
+
+jobs:
+  update-marketplace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract payload
+        id: payload
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            PLUGIN="${{ github.event.inputs.plugin }}"
+          else
+            VERSION="${{ github.event.client_payload.version }}"
+            PLUGIN="${{ github.event.client_payload.plugin }}"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "plugin=$PLUGIN" >> $GITHUB_OUTPUT
+          echo "Updating $PLUGIN to version $VERSION"
+
+      - name: Update marketplace.json
+        run: |
+          VERSION="${{ steps.payload.outputs.version }}"
+          PLUGIN="${{ steps.payload.outputs.plugin }}"
+
+          # Update plugin version in marketplace.json
+          jq --arg v "$VERSION" --arg p "$PLUGIN" '
+            .plugins |= map(
+              if .name == $p then .version = $v else . end
+            )
+          ' .claude-plugin/marketplace.json > tmp.json && mv tmp.json .claude-plugin/marketplace.json
+
+          echo "Updated marketplace.json:"
+          cat .claude-plugin/marketplace.json
+
+      - name: Commit and push
+        run: |
+          VERSION="${{ steps.payload.outputs.version }}"
+          PLUGIN="${{ steps.payload.outputs.plugin }}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .claude-plugin/marketplace.json
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update $PLUGIN to v$VERSION"
+            git push
+          fi
