@@ -15,12 +15,18 @@
         "url": "https://github.com/Dario-Arcos/ai-framework.git"
       },
       "description": "Constitutional AI-first development framework with specialized agents, workflow commands, and intelligent hooks",
-      "version": "5.0.0",
+      "version": "5.1.0",
       "author": {
         "name": "Dario Arcos"
       },
       "category": "productivity",
-      "tags": ["ai-first", "constitutional-governance", "tdd", "agents", "workflow-automation"],
+      "tags": [
+        "ai-first",
+        "constitutional-governance",
+        "tdd",
+        "agents",
+        "workflow-automation"
+      ],
       "strict": true
     }
   ]
