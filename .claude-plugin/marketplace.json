@@ -15,7 +15,7 @@
         "url": "https://github.com/Dario-Arcos/ai-framework.git"
       },
       "description": "Constitutional AI-first development framework with specialized agents, workflow commands, and intelligent hooks",
-      "version": "2026.2.0",
+      "version": "2026.2.1",
       "author": {
         "name": "Dario Arcos"
       },
