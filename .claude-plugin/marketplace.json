@@ -1,32 +1,42 @@
 {
-  "name": "ai-framework-marketplace",
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "dario-arcos-plugins",
+  "description": "Dario Arcos' plugin catalog. Stable channel for Viterbi: the agnostic meta-harness for agentic engineering.",
   "owner": {
     "name": "Dario Arcos"
   },
   "metadata": {
-    "description": "Curated Claude Code plugins for AI-first development",
-    "version": "1.0.0"
+    "version": "2.0.0"
   },
   "plugins": [
     {
-      "name": "ai-framework",
-      "source": {
-        "source": "url",
-        "url": "https://github.com/Dario-Arcos/ai-framework.git"
-      },
-      "description": "Constitutional AI-first development framework with specialized agents, workflow commands, and intelligent hooks",
-      "version": "2026.3.1",
+      "name": "viterbi",
+      "description": "Core Viterbi harness workflows plus the sanctioned npx viterbi init onboarding skill.",
       "author": {
         "name": "Dario Arcos"
       },
-      "category": "productivity",
-      "tags": [
-        "ai-first",
-        "constitutional-governance",
-        "tdd",
-        "agents",
-        "workflow-automation"
-      ],
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/Dario-Arcos/Viterbi.git",
+        "path": "plugins/viterbi",
+        "ref": "stable"
+      },
+      "strict": true
+    },
+    {
+      "name": "viterbi-sonar",
+      "description": "Viterbi Sonar and frontier-radar workflows for proposal diffs and public-first signal ingestion.",
+      "author": {
+        "name": "Dario Arcos"
+      },
+      "category": "development",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/Dario-Arcos/Viterbi.git",
+        "path": "plugins/viterbi-sonar",
+        "ref": "stable"
+      },
       "strict": true
     }
   ]
