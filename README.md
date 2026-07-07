@@ -5,29 +5,24 @@ Dario Arcos' plugin catalog. Stable channel for [Viterbi](https://github.com/Dar
 ## Install (Claude Code)
 
 ```
-/plugin marketplace add Dario-Arcos/plugins
+/plugin marketplace add Dario-Arcos/plugins-marketplace
 /plugin install viterbi@dario-arcos-plugins
-/plugin install viterbi-sonar@dario-arcos-plugins
 ```
 
 ## Install (Codex)
 
 ```
-codex plugin marketplace add Dario-Arcos/Viterbi
+codex plugin marketplace add Dario-Arcos/Viterbi --ref stable
 codex plugin add viterbi@viterbi
-codex plugin add viterbi-sonar@viterbi
 ```
 
-## Plugins
+## What the plugin is
 
-| Plugin | What it does |
-| --- | --- |
-| `viterbi` | Core harness workflows: missions, proportional loops, adversarial review, memory GC, skillpack governance, and the `npx viterbi init` onboarding path. |
-| `viterbi-sonar` | Sonar and frontier-radar workflows: public-first signal harvest, refute pass, and proposal diffs with a supervised gate. |
+The `viterbi` plugin is a thin onboarding pointer: one skill that detects whether your project already runs the Viterbi harness, guides `npx viterbi init` when it does not, and defers to your repo's own guidance when it does. The npm CLI owns installation, updates, and every operational skill — so the plugin can never drift from the harness in your repo.
 
 ## Channels
 
-This catalog serves the `stable` ref of the Viterbi repository — commits land there only after the full promotion gate (harness validator, plugin sync check, and a live install smoke on both runtimes). For the dev channel, add the Viterbi repository directly and track `main`.
+This catalog serves the `stable` ref of the Viterbi repository. Commits reach `stable` only through the promotion gate: harness validator, plugin sync check, and a live install smoke on both runtimes. For the dev channel, add the Viterbi repository directly and track `main`.
 
 ## Previous catalog
 
